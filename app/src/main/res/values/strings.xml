@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">graphThing - Jakub Sobieraj 4pr T5</string>
+    <string name="graph_value">Graph value</string>
+
+    <!-- Button labels -->
+    <string name="apply_button">Apply</string>
+    <string name="increment_button">+</string>
+    <string name="decrement_button">-</string>
+
+    <!-- TextView labels -->
+    <string name="i_text">i</string>
+    <string name="j_text">j</string>
+    <string name="value_text">Value</string>
+
+</resources>
