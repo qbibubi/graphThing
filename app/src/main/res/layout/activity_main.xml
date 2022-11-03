@@ -1,137 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/incrementButtonJ"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/increment_button"
-        android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/jTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/incrementButtonI" />
-
-    <Button
-        android:id="@+id/decrementButtonJ"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/decrement_button"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
-        app:layout_constraintStart_toEndOf="@+id/incrementButtonJ"
-        app:layout_constraintTop_toBottomOf="@+id/decrementButtonI" />
-
-    <TextView
-        android:id="@+id/iTV"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/i_text"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/iTextNumber"
-        app:layout_constraintHorizontal_bias="0.811"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/jTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/j_text"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/jTextNumber"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iTV" />
+        <NumberPicker
+            android:id="@+id/startPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <NumberPicker
+            android:id="@+id/endPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/applyButton"
-        android:layout_width="108dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/apply_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/valueTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/jTextNumber" />
+        android:text="@string/apply_button"/>
 
     <TextView
-        android:id="@+id/valueTV"
+        android:id="@+id/outcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/value_text"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/valueTextNumber"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jTV" />
+        android:text="@string/value_text"/>
 
-    <EditText
-        android:id="@+id/iTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="5"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/jTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="5"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iTextNumber" />
-
-    <EditText
-        android:id="@+id/valueTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="5"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jTextNumber" />
-
-    <Button
-        android:id="@+id/incrementButtonI"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/increment_button"
-        android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/iTextNumber"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/decrementButtonI"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/decrement_button"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toEndOf="@+id/incrementButtonI"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
