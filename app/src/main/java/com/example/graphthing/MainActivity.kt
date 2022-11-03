@@ -2,26 +2,37 @@ package com.example.graphthing
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.NumberPicker
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var startPoint: NumberPicker
-    lateinit var endPoint: NumberPicker
-    lateinit var applyButton: Button
-    lateinit var outcomeTextView: TextView
-    //lateinit var mainGraph: Graph
+    // Late declaration of objects
+    private lateinit var startPoint: NumberPicker
+    private lateinit var endPoint: NumberPicker
+    private lateinit var applyButton: Button
+    private lateinit var outcomeTextView: TextView
+    private lateinit var mainGraph: GraphBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Definitions of objects
         startPoint = findViewById(R.id.startPoint)
         endPoint = findViewById(R.id.endPoint)
         applyButton = findViewById(R.id.applyButton)
         outcomeTextView = findViewById(R.id.outcomeTextView)
 
+        // TODO(DIJKSTRA ALGORITHM LOGIC)
+
+        // Main graph definition
+        mainGraph = GraphBase(20, 20, 10)
+
+        // Start and end point values
+        startPoint.minValue = 0
+        startPoint.maxValue = 9
+        endPoint.minValue = 0
+        endPoint.maxValue = 9
     }
 }

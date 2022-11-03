@@ -30,6 +30,7 @@ class GraphBase(val nodes: Int, val edges: Int) {
 
         for (i in 0 until edges) {
             // Randomly generate first, second node and their cost
+            // TODO:(CHECK FOR DOUBLE REPEATED RANDOM NUMBERS)
             val firstNode = Random.nextInt(nodes)
             val secondNode= Random.nextInt(nodes - 1)
             val cost = Random.nextInt(1, maxCost)
