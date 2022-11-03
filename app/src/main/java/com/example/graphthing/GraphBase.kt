@@ -18,19 +18,29 @@ class GraphBase(val nodes: Int, val edges: Int) {
                 maxCost: Int = 10
                 ) : this(nodes, edges)
     {
+        // Mutable adjacent matrix for nodes
         val mutAdjacentMatrix: List<MutableList<Vertex>> = List(nodes) {
             mutableListOf()
         }
 
-        val mutEdges = MutableList(edges) {
+        // Mutable list of edges
+        val mutEdgesList = MutableList(edges) {
             Edge(0, 0, 0)
         }
 
         for (i in 0 until edges) {
-            val node = Random.nextInt(nodes)
-            val randomNode= Random.nextInt(nodes - 1)
-
-
+            // Randomly generate first, second node and their cost
+            val firstNode = Random.nextInt(nodes)
+            val secondNode= Random.nextInt(nodes - 1)
+            val cost = Random.nextInt(1, maxCost)
+1
+            //
+            mutAdjacentMatrix[firstNode].add(Vertex(secondNode, cost))
+            mutAdjacentMatrix[secondNode].add(Vertex(firstNode, cost))
+            mutEdgesList.add(Edge(firstNode, secondNode, cost))
         }
+
+        adjacentMatrix = mutAdjacentMatrix
+        edgesList = mutEdgesList
     }
 }
