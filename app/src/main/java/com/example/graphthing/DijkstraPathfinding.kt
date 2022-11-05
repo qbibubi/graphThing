@@ -9,7 +9,7 @@ data class Cost(val node: Int, val cost: Int)
 class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun Pathfind(s: Int, e: Int) : Path? {
+    override fun Pathfind(start: Int, end: Int) : Path? {
 
         // Previous node to current one
         val prev = MutableList(graph.nodes) {
@@ -21,11 +21,11 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
             -1
         }
 
-        // Distance
-        costs[s] = 0
+        // Distance from start
+        costs[start] = 0
 
         val q = PriorityQueue<Cost>(compareBy { it.cost })
-        q.add(Cost(s, 0))
+        q.add(Cost(start, 0))
 
         while (!q.isEmpty()) {
             val curr = q.remove()
@@ -43,18 +43,18 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
         }
 
         // Guard
-        if (prev[e] == -1)
+        if (prev[end] == -1)
             return null
 
         // Path calculation
         var path: MutableList<Int> = mutableListOf<Int>()
-        var i: Int = e
+        var i: Int = end
 
         do {
             path.add(i)
             i = prev[i]
-        } while(i != s)
+        } while(i != start)
 
-        return Path(path.reversed(), costs[e])
+        return Path(path.reversed(), costs[end])
     }
 }
