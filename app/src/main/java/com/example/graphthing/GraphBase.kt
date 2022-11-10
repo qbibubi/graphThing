@@ -35,12 +35,15 @@ class GraphBase(val nodes: Int, val edges: Int) {
             val secondNode= Random.nextInt(nodes - 1)
             val cost = Random.nextInt(1, maxCost)
 1
+            // Add nodes to mutable adjacent matrix
             //
             mutAdjacentMatrix[firstNode].add(Vertex(secondNode, cost))
             mutAdjacentMatrix[secondNode].add(Vertex(firstNode, cost))
             mutEdgesList.add(Edge(firstNode, secondNode, cost))
         }
 
+        // Set main matrix and edges lists with
+        //
         adjacentMatrix = mutAdjacentMatrix
         edgesList = mutEdgesList
     }

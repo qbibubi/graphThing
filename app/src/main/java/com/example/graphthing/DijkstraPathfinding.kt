@@ -16,14 +16,15 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
             -1
         }
 
-        // Lowest current cost from s
+        // Set all costs to non-positive number
         val costs = MutableList(graph.nodes) {
             -1
         }
 
-        // Distance from start
+        // Start cost
         costs[start] = 0
 
+        //
         val q = PriorityQueue<Cost>(compareBy { it.cost })
         q.add(Cost(start, 0))
 

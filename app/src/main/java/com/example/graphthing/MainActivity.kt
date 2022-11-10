@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 
 class MainActivity : AppCompatActivity() {
-    // Late declaration of objects
+    // Late declaration of views
     private lateinit var startPoint: NumberPicker
     private lateinit var endPoint: NumberPicker
     private lateinit var applyButton: Button
