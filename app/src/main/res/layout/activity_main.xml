@@ -24,7 +24,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"/>
 
+        <NumberPicker
+            android:id="@+id/nodeCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"/>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/graphButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/graph_button"
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/applyButton"

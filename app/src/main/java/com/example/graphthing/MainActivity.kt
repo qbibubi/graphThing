@@ -9,10 +9,12 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 
 class MainActivity : AppCompatActivity() {
-    // Late declaration of views
+    // late declaration of views
     private lateinit var startPoint: NumberPicker
     private lateinit var endPoint: NumberPicker
+    private lateinit var nodeCost: NumberPicker
     private lateinit var applyButton: Button
+    private lateinit var graphButton: Button
     private lateinit var outcomeTextView: TextView
     private lateinit var mainGraph: GraphBase
 
@@ -21,14 +23,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Definitions of objects
+        // definitions of views and buttons
         startPoint = findViewById(R.id.startPoint)
         endPoint = findViewById(R.id.endPoint)
+        nodeCost = findViewById(R.id.nodeCost)
         applyButton = findViewById(R.id.applyButton)
+        graphButton = findViewById(R.id.graphButton)
         outcomeTextView = findViewById(R.id.outcomeTextView)
 
-        // Main graph declaration
-        mainGraph = GraphBase(20, 20, 10)
+        graphButton.setOnClickListener {
+            mainGraph = GraphBase(10, 5,10)
+
+            // TODO("IMPLEMENT SHOWING THE MATRIX")
+        }
 
         applyButton.setOnClickListener {
             val dijkstra = DijkstraPathfinding(mainGraph)
@@ -40,10 +47,12 @@ class MainActivity : AppCompatActivity() {
             outcomeTextView.text = path.toString()
         }
 
-        // Start and end point values
+        // start, end point, node cost values
         startPoint.minValue = 0
         startPoint.maxValue = 9
         endPoint.minValue = 0
         endPoint.maxValue = 9
+        nodeCost.minValue = 1
+        nodeCost.maxValue = 9
     }
 }
