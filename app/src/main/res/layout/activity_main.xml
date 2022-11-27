@@ -9,24 +9,35 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:weightSum="1.0">
 
         <NumberPicker
             android:id="@+id/startPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.25"
             android:layout_margin="20dp"/>
 
         <NumberPicker
             android:id="@+id/endPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_margin="20dp"/>
+
+        <NumberPicker
+            android:id="@+id/nodeCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
             android:layout_margin="20dp"/>
 
         <NumberPicker
             android:id="@+id/isConnected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.25"
             android:layout_margin="20dp"/>
 
     </LinearLayout>
@@ -34,8 +45,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:weightSum="1.0"
+        android:weightSum="2.0"
         android:layout_gravity="center">
 
         <Button
@@ -46,11 +56,18 @@
             android:text="@string/apply_button" />
 
         <Button
+            android:id="@+id/addCost"
+            android:layout_width="match_parent"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:text="@string/cost_button" />
+
+        <Button
             android:id="@+id/connectButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_weight="0.5"
+            android:layout_weight="0.7"
             android:text="@string/connect_button" />
 
     </LinearLayout>

@@ -30,14 +30,14 @@ class Dijkstra(graph: Graph) : AlgorithmStrategy(graph) {
         while (!q.isEmpty()) {
             val curr = q.remove()
 
-            graph.adjacentMatrix[curr.node].forEach { vertex ->
-                if(curr.cost + vertex.cost > costs[vertex.node] && costs[vertex.node] != -1) {
+            graph.adjacencyList[curr.node].forEach { vertex ->
+                if(curr.cost + vertex.c > costs[vertex.n] && costs[vertex.n] != -1) {
                     return@forEach
                 }
 
-                costs[vertex.node] = curr.cost + vertex.cost
-                prev[vertex.node] = curr.node
-                q.add(Cost(vertex.node, costs[vertex.node]))
+                costs[vertex.n] = curr.cost + vertex.c
+                prev[vertex.n] = curr.node
+                q.add(Cost(vertex.n, costs[vertex.n]))
             }
         }
 

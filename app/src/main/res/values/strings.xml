@@ -6,6 +6,7 @@
     <string name="apply_button">Find path</string>
     <string name="graph_button">Graph</string>
     <string name="connect_button">Connect</string>
+    <string name="cost_button">Cost</string>
 
     <!-- TextView labels -->
     <string name="value_text">Outcome</string>
