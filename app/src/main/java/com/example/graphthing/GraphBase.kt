@@ -7,7 +7,7 @@ data class Vertex(val node: Int, val cost: Int)
 
 class GraphBase(val nodes: Int, val edges: Int) {
     lateinit var adjacentMatrix: List<List<Vertex>>
-    lateinit var edgesList: List<Edge>
+    private lateinit var edgesList: List<Edge>
 
     constructor(nodes: Int = 20,
                 edges: Int = 10,

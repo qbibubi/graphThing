@@ -9,7 +9,7 @@ data class Cost(val node: Int, val cost: Int)
 class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun Pathfind(start: Int, end: Int) : Path? {
+    override fun pathfind(start: Int, end: Int) : Path? {
 
         // Previous node to current one
         val prev = MutableList(graph.nodes) {
@@ -31,8 +31,7 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
             val curr = q.remove()
 
             graph.adjacentMatrix[curr.node].forEach { vertex ->
-                if(curr.cost + vertex.cost > costs[vertex.node]
-                    && costs[vertex.node] != -1) {
+                if(curr.cost + vertex.cost > costs[vertex.node] && costs[vertex.node] != -1) {
                     return@forEach
                 }
 
@@ -47,7 +46,7 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
             return null
 
         // Path calculation
-        var path: MutableList<Int> = mutableListOf()
+        val path: MutableList<Int> = mutableListOf()
         var i: Int = end
 
         do {

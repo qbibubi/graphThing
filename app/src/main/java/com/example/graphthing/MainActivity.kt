@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 
 class MainActivity : AppCompatActivity() {
-    // late declaration of views
     private lateinit var startPoint: NumberPicker
     private lateinit var endPoint: NumberPicker
     private lateinit var nodeCost: NumberPicker
@@ -36,20 +35,24 @@ class MainActivity : AppCompatActivity() {
         outcomeTextView = findViewById(R.id.outcomeTextView)
         graphTextView = findViewById(R.id.graphView)
 
+        // Create graph and output it to graph string
         graphButton.setOnClickListener {
             mainGraph = GraphBase(10, 5, 10)
             graphTextView.text = mainGraph.adjacentMatrix.toString()
         }
 
+        // Find path with Dijkstra and output it to string
         applyButton.setOnClickListener {
             val dijkstra = DijkstraPathfinding(mainGraph)
-            val path = dijkstra.Pathfind(
+            val path = dijkstra.pathfind(
                 startPoint.value,
                 endPoint.value
             )
+
             outcomeTextView.text = path.toString()
         }
 
+        // Connect selected nodes on click
         connectButton.setOnClickListener {
             // TODO(IMPLEMENT CONNECTING)
         }
