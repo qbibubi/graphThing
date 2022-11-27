@@ -24,7 +24,6 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
         // Start cost
         costs[start] = 0
 
-        //
         val q = PriorityQueue<Cost>(compareBy { it.cost })
         q.add(Cost(start, 0))
 
@@ -48,7 +47,7 @@ class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
             return null
 
         // Path calculation
-        var path: MutableList<Int> = mutableListOf<Int>()
+        var path: MutableList<Int> = mutableListOf()
         var i: Int = end
 
         do {

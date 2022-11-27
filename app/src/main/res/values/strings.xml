@@ -3,7 +3,7 @@
     <string name="graph_value">Graph value</string>
 
     <!-- Button labels -->
-    <string name="apply_button">Apply</string>
+    <string name="apply_button">Find path</string>
     <string name="graph_button">Graph</string>
     <string name="connect_button">Connect</string>
 

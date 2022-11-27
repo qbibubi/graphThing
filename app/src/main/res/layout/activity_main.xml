@@ -9,7 +9,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center">
 
         <NumberPicker
@@ -32,26 +31,36 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:weightSum="1.0"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/applyButton"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_button" />
+
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="0.5"
+            android:text="@string/connect_button" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/graphButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/graph_button"
         android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/applyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apply_button"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/connectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connect_button"
-        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/outcomeTextView"
