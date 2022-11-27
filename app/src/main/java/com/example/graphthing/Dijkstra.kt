@@ -6,7 +6,7 @@ import java.util.PriorityQueue
 
 data class Cost(val node: Int, val cost: Int)
 
-class DijkstraPathfinding(graph: GraphBase) : AlgorithmStrategy(graph) {
+class Dijkstra(graph: Graph) : AlgorithmStrategy(graph) {
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun pathfind(start: Int, end: Int) : Path? {

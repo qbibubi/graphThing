@@ -5,14 +5,11 @@ import kotlin.random.Random
 data class Edge(val nodeFirst: Int, val nodeSecond: Int, val cost: Int)
 data class Vertex(val node: Int, val cost: Int)
 
-class GraphBase(val nodes: Int, val edges: Int) {
+class Graph(val nodes: Int, val edges: Int) {
     lateinit var adjacentMatrix: List<List<Vertex>>
     private lateinit var edgesList: List<Edge>
 
-    constructor(nodes: Int = 20,
-                edges: Int = 10,
-                maxCost: Int = 10)
-            : this(nodes, edges)
+    constructor(nodes: Int = 20, edges: Int = 10, maxCost: Int = 10) : this(nodes, edges)
     {
         // Mutable adjacent matrix for nodes
         val mutAdjacentMatrix: List<MutableList<Vertex>> = List(nodes) {
@@ -28,7 +25,7 @@ class GraphBase(val nodes: Int, val edges: Int) {
             // Randomly generate first, second node and their cost
             // TODO:(CHECK FOR DOUBLE REPEATED RANDOM NUMBERS)
             val firstNode = Random.nextInt(nodes)
-            val secondNode= Random.nextInt(nodes - 1)
+            val secondNode = Random.nextInt(nodes - 1)
             val cost = Random.nextInt(1, maxCost)
 
             // Add nodes to mutable adjacent matrix
@@ -41,5 +38,17 @@ class GraphBase(val nodes: Int, val edges: Int) {
         // with adjacent matrix and list
         adjacentMatrix = mutAdjacentMatrix
         edgesList = mutEdgesList
+    }
+
+    fun addEdge() {
+
+    }
+
+    fun removeEdge() {
+
+    }
+
+    fun graphToString() {
+
     }
 }

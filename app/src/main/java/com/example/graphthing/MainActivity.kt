@@ -12,13 +12,13 @@ import androidx.annotation.RequiresApi
 class MainActivity : AppCompatActivity() {
     private lateinit var startPoint: NumberPicker
     private lateinit var endPoint: NumberPicker
-    private lateinit var nodeCost: NumberPicker
+    private lateinit var isConnected: NumberPicker
     private lateinit var connectButton: Button
     private lateinit var applyButton: Button
     private lateinit var graphButton: Button
     private lateinit var outcomeTextView: TextView
     private lateinit var graphTextView: TextView
-    private lateinit var mainGraph: GraphBase
+    private lateinit var mainGraph: Graph
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         // definitions of views and buttons
         startPoint = findViewById(R.id.startPoint)
         endPoint = findViewById(R.id.endPoint)
-        nodeCost = findViewById(R.id.nodeCost)
+        isConnected = findViewById(R.id.isConnected)
         applyButton = findViewById(R.id.applyButton)
         graphButton = findViewById(R.id.graphButton)
         connectButton = findViewById(R.id.connectButton)
@@ -37,24 +37,28 @@ class MainActivity : AppCompatActivity() {
 
         // Create graph and output it to graph string
         graphButton.setOnClickListener {
-            mainGraph = GraphBase(10, 5, 10)
+            mainGraph = Graph(10, 5, 10)
             graphTextView.text = mainGraph.adjacentMatrix.toString()
         }
 
         // Find path with Dijkstra and output it to string
         applyButton.setOnClickListener {
-            val dijkstra = DijkstraPathfinding(mainGraph)
+            val dijkstra = Dijkstra(mainGraph)
             val path = dijkstra.pathfind(
                 startPoint.value,
                 endPoint.value
             )
 
-            outcomeTextView.text = path.toString()
+            // path to string
         }
 
         // Connect selected nodes on click
         connectButton.setOnClickListener {
-            // TODO(IMPLEMENT CONNECTING)
+            if (isConnected.value == 0) {
+                mainGraph.removeEdge()
+            }
+
+            mainGraph.addEdge()
         }
 
         // start, end point, node cost values
@@ -62,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         startPoint.maxValue = 9
         endPoint.minValue = 0
         endPoint.maxValue = 9
-        nodeCost.minValue = 0
-        nodeCost.maxValue = 1
+        isConnected.minValue = 0
+        isConnected.maxValue = 1
     }
 }
