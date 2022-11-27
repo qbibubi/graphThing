@@ -13,10 +13,9 @@ class GraphBase(val nodes: Int, val edges: Int) {
     lateinit var adjacentMatrix: List<List<Vertex>>
     lateinit var edgesList: List<Edge>
 
-    constructor(nodes: Int = 10,
-                edges: Int = 5,
-                maxCost: Int = 10
-                ) : this(nodes, edges)
+    constructor(nodes: Int = 20,
+                edges: Int = 10,
+                maxCost: Int = 10) : this(nodes, edges)
     {
         // Mutable adjacent matrix for nodes
         val mutAdjacentMatrix: List<MutableList<Vertex>> = List(nodes) {

@@ -5,6 +5,7 @@
     <!-- Button labels -->
     <string name="apply_button">Apply</string>
     <string name="graph_button">Graph</string>
+    <string name="connect_button">Connect</string>
 
     <!-- TextView labels -->
     <string name="value_text">Outcome</string>
