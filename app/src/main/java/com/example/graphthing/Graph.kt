@@ -2,42 +2,44 @@ package com.example.graphthing
 
 import kotlin.random.Random
 
-data class Edge(val n1: Int, val n2: Int, val c: Int)
-data class Vertex(val n: Int, val c: Int)
+data class Edge(val first: Int, val second: Int, val cost: Int)
+data class Vertex(val node: Int, val cost: Int)
 
-class Graph(val nodes: Int, val edges: Int) {
-    lateinit var adjacencyList: List<List<Vertex>>
-    lateinit var edgesList: List<Edge>
+class Graph(val nCount: Int, val eCount: Int) {
+    lateinit var adjacencyList: List<MutableList<Vertex>>
+    lateinit var edgesList: MutableList<Edge>
 
-    constructor(nodes: Int = 10, edges: Int = 5, maxCost: Int = 10) : this(nodes, edges)
-    {
-        val mutAdjacencyList: List<MutableList<Vertex>> = List(nodes) { mutableListOf() }
-        val mutEdgesList = MutableList(edges) { Edge(0, 0, 0) }
-
-        for (i in 0 until edges) {
-            val firstNode = Random.nextInt(nodes)
-            val secondNode = Random.nextInt(nodes - 1)
-            val cost = Random.nextInt(1, maxCost)
-
-            // Add nodes to mutable adjacent matrix
-            mutAdjacencyList[firstNode].add(Vertex(secondNode, cost))
-            mutAdjacencyList[secondNode].add(Vertex(firstNode, cost))
-            mutEdgesList.add(Edge(firstNode, secondNode, cost))
+    constructor(nCount: Int, eCount: Int, mCost: Int) : this(nCount, eCount){
+        adjacencyList = List(nCount) {
+            mutableListOf()
         }
 
-        // Set main matrix and edges lists
-        // with adjacent matrix and list
-        adjacencyList = mutAdjacencyList
-        edgesList = mutEdgesList
+        edgesList = MutableList(eCount) {
+            Edge(0, 0, 0)
+        }
+
+        for (i in 0 until eCount) {
+            val nodeFirst = Random.nextInt(nCount)
+            val random = Random.nextInt(nCount - 1)
+            val cost = Random.nextInt(1, mCost)
+
+            val nodeSecond: Int = if (nodeFirst > random ) random else {
+                random + 1
+            }
+
+            adjacencyList[nodeFirst].add(Vertex(nodeSecond, cost))
+            adjacencyList[nodeSecond].add(Vertex(nodeFirst, cost))
+            edgesList.add(Edge(nodeFirst, nodeSecond, cost))
+        }
+
     }
 
-
-    fun addEdge(n1: Int, n2: Int, c: Int) {
-
+    fun addEdge(first: Int, second: Int, cost: Int) {
+        edgesList.add(Edge(first, second, cost))
     }
 
-    fun removeEdge(n1: Int, n2: Int, c: Int) {
-
+    fun removeEdge(first: Int, second: Int, cost: Int) {
+        edgesList.remove(Edge(first, second, cost))
     }
 
 }

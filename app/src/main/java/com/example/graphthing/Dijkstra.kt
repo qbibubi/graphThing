@@ -2,58 +2,43 @@ package com.example.graphthing
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import java.util.PriorityQueue
+import java.util.*
 
 data class Cost(val node: Int, val cost: Int)
 
-class Dijkstra(graph: Graph) : AlgorithmStrategy(graph) {
+class Dijkstra(graph: Graph) : Algorithm(graph) {
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun pathfind(start: Int, end: Int) : Path? {
+    override fun pathfind(s: Int, e: Int):Path? {
+        val previous = MutableList(graph.nCount) { -1 }
+        val costs = MutableList(graph.nCount) { -1 }
+        costs[s] = 0;
 
-        // Previous node to current one
-        val prev = MutableList(graph.nodes) {
-            -1
-        }
+        val queue = PriorityQueue<Cost>(compareBy{ it.cost })
+        queue.add(Cost(s,0))
 
-        // Set all costs to non-positive number
-        val costs = MutableList(graph.nodes) {
-            -1
-        }
+        while (!queue.isEmpty()) {
+            val current = queue.remove()
 
-        // Start cost
-        costs[start] = 0
+            for (vertex in graph.adjacencyList[current.node] ){
+                if (current.cost + vertex.cost > costs[vertex.node]
+                    && costs[vertex.node] != -1) continue
 
-        val q = PriorityQueue<Cost>(compareBy { it.cost })
-        q.add(Cost(start, 0))
-
-        while (!q.isEmpty()) {
-            val curr = q.remove()
-
-            graph.adjacencyList[curr.node].forEach { vertex ->
-                if(curr.cost + vertex.c > costs[vertex.n] && costs[vertex.n] != -1) {
-                    return@forEach
-                }
-
-                costs[vertex.n] = curr.cost + vertex.c
-                prev[vertex.n] = curr.node
-                q.add(Cost(vertex.n, costs[vertex.n]))
+                costs[vertex.node] = current.cost + vertex.cost
+                previous[vertex.node] = current.node
+                queue.add(Cost(vertex.node, costs[vertex.node]))
             }
         }
 
-        // Guard
-        if (prev[end] == -1)
-            return null
+        if(previous[e] == -1) return null
 
-        // Path calculation
-        val path: MutableList<Int> = mutableListOf()
-        var i: Int = end
-
+        var path: MutableList<Int> = mutableListOf()
+        var i = e
         do {
             path.add(i)
-            i = prev[i]
-        } while(i != start)
+            i = previous[i]
+        } while(i != s)
 
-        return Path(path.reversed(), costs[end])
+        return Path(path.reversed(), costs[e])
     }
 }
