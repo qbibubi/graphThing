@@ -35,10 +35,14 @@ class Graph(val nCount: Int, val eCount: Int) {
     }
 
     fun addEdge(first: Int, second: Int, cost: Int) {
+        adjacencyList[first].add(Vertex(second, cost))
+        adjacencyList[second].add(Vertex(first, cost))
         edgesList.add(Edge(first, second, cost))
     }
 
     fun removeEdge(first: Int, second: Int, cost: Int) {
+        adjacencyList[first].remove(Vertex(second, cost))
+        adjacencyList[second].remove(Vertex(first, cost))
         edgesList.remove(Edge(first, second, cost))
     }
 

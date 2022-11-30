@@ -30,7 +30,8 @@ class Dijkstra(graph: Graph) : Algorithm(graph) {
             }
         }
 
-        if(previous[e] == -1) return null
+        if(previous[e] == -1)
+            return null
 
         var path: MutableList<Int> = mutableListOf()
         var i = e

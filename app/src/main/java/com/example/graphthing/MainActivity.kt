@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         g = Graph(10, 5, 10)
 
-        // Output graph and edges to the screen
+        // Output vertices and edges to the screen
         graphButton.setOnClickListener {
             graphTextView.text = g.adjacencyList.toString() + '\n' + '\n' + g.edgesList.toString()
         }
